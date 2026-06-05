@@ -91,7 +91,7 @@ export const OrganizationalUnitFC = ({ mode }: { mode: "edit" | "create" }) => {
   return (
     <div>
       <h5 className="p-2 mb-1 text-1xl font-bold text-gray-400 dark:text-white border border-gray-200 bg-[#cddafd] rounded-t-lg">
-        Nuevo Departamento Academico
+       {mode === "create" ? "Nuevo Departamento Academico" : "Editar Departamento Academico"}
       </h5>
       <div className="p-6 space-y-6">
         <form onSubmit={handleSubmit(organizationSubmit)}>
@@ -171,7 +171,7 @@ export const OrganizationalUnitFC = ({ mode }: { mode: "edit" | "create" }) => {
             type="submit"
             className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
-            Agregar
+            {mode === "create" ? "Agregar" : "Actualizar"}
           </Button>
         </form>
       </div>

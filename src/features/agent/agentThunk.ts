@@ -25,11 +25,14 @@ export const fetchAgentById = createAsyncThunk<AgentWithId, {agentId: number}, {
     try {
       const { data } = await axiosWithAuth.get<AgentWithId>(`/agent/${agentId}`);
     
-
+     console.log("AGENTE OBTENIDO POR ID ", data);
       return data;
     } catch (error) {
       
-     
+       if(error instanceof AxiosError && (error.response?.status === 404)){
+        toast.error( error.response?.data?.message );
+        return rejectWithValue( error.response?.data?.message);
+      }
 
       return rejectWithValue("Error inesperado" + String(error));
     }

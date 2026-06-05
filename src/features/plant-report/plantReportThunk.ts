@@ -18,9 +18,9 @@ const statusMap: Record<string, PlantStatus> = {
   "5": PlantStatus.SUSPENDIDO
 };
 const characterPlantMap: Record<string, CharacterPlant> = {
-  "0": CharacterPlant.CONTRATADO,
+  "0": CharacterPlant.ORDINARIO,
   "1": CharacterPlant.INTERINO,
-  "2": CharacterPlant.ORDINARIO 
+  "2": CharacterPlant.CONTRATADO 
 };
 
 const mapPlantDtoToModel = (dto: PlantOfPositionDto): PlantOfPositionDto=> ({

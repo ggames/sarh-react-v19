@@ -10,18 +10,26 @@ import { fetchOriginPositions } from "../../features/position/positionThunk";
 export const OriginPositions = ({ originId }: { originId: number }) => {
 
     const dispatch = useAppDispatch();
-    const { positions } = useAppSelector((state: RootState) => state.positions);
+    const { originPositions } = useAppSelector((state: RootState) => state.positions);
 
     const loading = useAppSelector((state: RootState) => state.positions.loading);
 
     // const { fetchPositions } = usePositionAction();
 
     useEffect(() => {
-     
+      
         if (originId) {
+             
             dispatch(fetchOriginPositions({ originId }));
+
+            
         }
+
     }, [dispatch, originId])
+
+    useEffect(() => {
+        console.log("CARGOS DE ORIGEN EN COMPONENTE ", originPositions);
+    }, [originPositions]);   
 
     return (
         <div className="container max-w-5xl mt-5">
@@ -58,8 +66,8 @@ export const OriginPositions = ({ originId }: { originId: number }) => {
                             <td colSpan={4} className="text-center py-4 text-gray-500">
                                 Cargando cargos ...
                             </td>
-                        </tr>) : Array.isArray(positions) && positions.length > 0 ? (
-                            positions.map((position) => (
+                        </tr>) : Array.isArray(originPositions) && originPositions.length > 0 ? (
+                            originPositions.map((position) => (
                                 <tr key={position.id} className="bg-white even:bg-gray-50 hover:bg-gray-100">
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="flex items-center">

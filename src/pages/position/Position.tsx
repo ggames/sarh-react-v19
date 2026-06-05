@@ -29,12 +29,12 @@ import { fetchTransformations } from "../../features/transformation/transformati
 
 type PositionFields = {
   id?: number;
-  pointId: number;
-  organizationalId: number;
+  point: number;
+  organizational: number;
   OriginPositions?: number[];
   pointsAvailable: number;
   positionStatus: string;
-  resolutionTransformationId?: number;
+  resolutionTransformation?: number;
 };
 
 export const Position = ({ mode }: { mode: "create" | "edit" }) => {
@@ -52,6 +52,7 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
     (state: RootState) => state.organizationals
   );
   const { position } = useAppSelector((state: RootState) => state.positions);
+  // const { originPositions } = useAppSelector((state: RootState) => state.positions);
   //const {} = useAppSelector((state: RootState) => state.positions)
 
   //const { fetchPoints } = usePointAction();
@@ -76,13 +77,13 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
     console.log("EDICION CARGO ", position);
     if (mode === "edit" && position) {
       setValue("id", position.id);
-      setValue("pointId", position?.pointID?.id);
-      setValue("pointsAvailable", position.pointID.amountPoint);
-      setValue("organizationalId", position.organizationalUnitID.id);
+      setValue("point", position?.point?.id);
+      setValue("pointsAvailable", position.point.amountPoint);
+      setValue("organizational", position.organizationalUnit.id);
       setValue("positionStatus", position?.positionStatus ?? "");
       setValue(
-        "resolutionTransformationId",
-        position?.creationResolutionID?.id
+        "resolutionTransformation",
+        position?.creationResolution?.id
       );
     }
   }, [mode, position, setValue]);
@@ -101,15 +102,15 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
   const onSubmit = (data: PositionFields) => {
     const positionRequest: PositionRequestWithId = {
       id: Number(id),
-      pointId: Number(data.pointId),
-      organizationalId: Number(data.organizationalId),
+      point: Number(data.point),
+      organizational: Number(data.organizational),
       originPositionIds: originPositionIds,
       positionStatus: data.positionStatus as (typeof StatusOfPosition)[
         | "ACTIVO"
         | "VACANTE_DEFINITIVA"
         | "VACANTE_TRANSITORIA"
         | "SUPRIMIDO"],
-      resolutionTransformationId: Number(data.resolutionTransformationId),
+      resolutionTransformation: Number(data.resolutionTransformation),
     };
     console.log("POSITION REQUEST: ", positionRequest);
     console.log("ORIGEN DE CARGO ", originPositionIds);
@@ -136,6 +137,7 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
           positionId: Number(id),
           position_request: positionRequest,
         })
+   
       );
       navigate("/cargos/all");
     }
@@ -153,9 +155,9 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
             {mode === "edit" && <input type="hidden" {...register("id")} />}
 
             <div>
-              <Label htmlFor="resolutionTransformationId">Transformación</Label>
+              <Label htmlFor="resolutionTransformation">Transformación</Label>
               <Select
-                {...register("resolutionTransformationId")}
+                {...register("resolutionTransformation")}
                 style={{ fontFamily: "monospace" }}
         
               >
@@ -171,9 +173,9 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
             </div>
 
             <div>
-              <Label htmlFor="pointId">Tipo de Cargo</Label>
+              <Label htmlFor="point">Tipo de Cargo</Label>
               <Select
-                {...register("pointId")}
+                {...register("point")}
                 onChange={handleChangeSelect}
         
               >
@@ -211,9 +213,9 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
             </div>
 
             <div>
-              <Label htmlFor="organizationalId">Unidad Org.</Label>
+              <Label htmlFor="organizational">Unidad Org.</Label>
               <Select
-                {...register("organizationalId")}
+                {...register("organizational")}
         
               >
                 <option value="">Seleccionar</option>
@@ -232,7 +234,10 @@ export const Position = ({ mode }: { mode: "create" | "edit" }) => {
               onResetDone={() => {}}
             />
           ) : (
-            position && <OriginPositions originId={Number(id)} />
+            <>
+            {id  && <OriginPositions originId={Number(id)} />}  
+              </>
+             
           )}
 
           <div className="mt-10 flex justify-center">

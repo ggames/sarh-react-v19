@@ -4,7 +4,7 @@ export interface OrganizationalSubUnit {
   
   nameSubUnit: string;
   guaraniCode?: string; 
-  organizationalUnit: number;
+  organizationalUnit: OrganizationalUnitWithId;
 
 }
 

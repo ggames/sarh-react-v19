@@ -32,7 +32,13 @@ const userSlice = createSlice({
             state.id = action.payload;
         },
         setUserPhoto: (state, action) => {
-            state.photoUrl = action.payload;
+            const newPhotoUrl = action.payload;
+            state.photoUrl = newPhotoUrl;
+            if (newPhotoUrl) {
+                localStorage.setItem('photoUrl', newPhotoUrl);
+            } else {
+                localStorage.removeItem('photoUrl');
+            }   
         },
       
     },

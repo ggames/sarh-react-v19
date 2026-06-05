@@ -5,14 +5,14 @@ import { StatusOfPosition } from '../constants/StatusOfPosition';
 
 export interface Position {
     
-    pointID: PointWithId;
-    organizationalUnitID: OrganizationalUnitWithId;
+    point: PointWithId;
+    organizationalUnit: OrganizationalUnitWithId;
     positionStatus: StatusOfPosition;
     newPosition: PositionWithId;
-    originPosition:  PositionWithId[];
+    parents:  PositionWithId[];
     pointsAvailable: number;
-    creationResolutionID: TransformationWithId;
-    resolutionSuppressionID: TransformationWithId ;
+    creationResolution: TransformationWithId;
+    resolutionSuppression: TransformationWithId ;
 }
 
 export interface PositionWithId extends Position {
@@ -31,11 +31,11 @@ export interface  PositionDto {
 }
 
 export interface PositionRequest {
-    pointId: number;
-    organizationalId: number;
+    point: number;
+    organizational: number;
     originPositionIds?: number[];
     positionStatus?: (typeof StatusOfPosition)[number];
-    resolutionTransformationId: number;
+    resolutionTransformation: number;
 }
 
 export interface PositionRequestWithId extends PositionRequest {

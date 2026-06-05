@@ -41,6 +41,7 @@ import { ResetPassword } from './pages/reset-password/Reset-Password'
 import { RestartPassword } from './pages/Login/RestartPassword'
 import { RegisterForm } from './pages/user/RegisterForm'
 import { Home } from './components/Home'
+import PrivateRoute from './components/private-route/PrivateRoute'
 
 
 
@@ -54,6 +55,7 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
+      
         <Route path="unauthorized" element={<Unauthorized />} />
 
 
@@ -67,14 +69,14 @@ function App() {
             <Route path='change' element={<RestartPassword />} />
           </Route>
         </Route>
-        <Route element={<RequireAuth allowedRoles={[Roles.ROLE_DEVELOPER]} />}>
+        <Route element={<RequireAuth allowedRoles={[Roles.ROLE_ADMIN]} />}>
           <Route element={<Layout />}>
             <Route path="puntos" element={<Point />} />
           </Route>
 
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[Roles.ROLE_ADMIN, Roles.ROLE_DEVELOPER]} />}>
+        <Route element={<RequireAuth allowedRoles={[Roles.ROLE_ADMIN, Roles.ROLE_ONLY_CONSULT]} />}>
           <Route element={<Layout />}>
             <Route path='resetpassword' element={<ResetPassword />} />
             <Route path="usuarios" element={<ListOfUsers />} />

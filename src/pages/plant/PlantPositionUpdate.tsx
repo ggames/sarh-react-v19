@@ -175,7 +175,7 @@ export const PlantPositionUpdate = () => {
           <div>
             <Label htmlFor="positionCode">Cod. Cargo</Label>
             <Input
-              value={plant?.position.pointID.positionCode}
+              value={plant?.position.point.positionCode}
               readOnly
               className="outline-green-600"
             />
@@ -183,7 +183,7 @@ export const PlantPositionUpdate = () => {
           <div>
             <Label htmlFor="namePosition">Tipo Cargo</Label>
             <Input
-              value={plant?.position.pointID.namePosition}
+              value={plant?.position.point.namePosition}
               readOnly
               className="outline-green-600"
             />
@@ -193,7 +193,7 @@ export const PlantPositionUpdate = () => {
             <Input
               value={Math.floor(
                 ((plant?.position?.pointsAvailable ?? 0) *
-                  (plant?.position?.pointID?.amountPoint ?? 0)) /
+                  (plant?.position?.point?.amountPoint ?? 0)) /
                   100
               )}
               readOnly
@@ -219,7 +219,7 @@ export const PlantPositionUpdate = () => {
           <div>
             <Label htmlFor="nameUnit">Unidad Org.</Label>
             <Input
-              value={plant?.position.organizationalUnitID.nameUnit}
+              value={plant?.position.organizationalUnit.nameUnit}
               readOnly
               className="outline-green-600"
             />
@@ -272,7 +272,7 @@ export const PlantPositionUpdate = () => {
         <div className="p-2">
            <table className="min-w-full divide-y divide-gray-200">
                              <thead className="bg-[#d5d8d3]">
-                                 <tr>
+                                 <tr>   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 capitalize tracking-wider">Id Cargo  </th>
                                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 capitalize tracking-wider">Estado Actual</th>
                                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 capitalize tracking-winder">Fecha Inicio</th>
                                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 capitalize tracking-wider">Fecha Cese</th>

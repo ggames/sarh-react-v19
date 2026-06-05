@@ -24,7 +24,7 @@ export const PointsTable = () => {
 
     useEffect(() => {
         dispatch(fetchPoints());
-    }, [dispatch]);
+    }, [dispatch, setEditingCell]);
 
     const handleDoubleClick = (id: number, field: keyof RowData, currentValue: string) => {
         setEditingCell({ id, field });
@@ -44,7 +44,7 @@ export const PointsTable = () => {
             amount_point: { amountPositionNew: Number(editedvalue) }
         }));
 
-        dispatch(fetchPoints());
+        //dispatch(fetchPoints());
         setEditingCell(null);
 
     }

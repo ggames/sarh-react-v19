@@ -16,7 +16,7 @@ export const ListPositions = () => {
 
    useEffect(() => {
       dispatch(fetchPositions());
-   }, [])
+   }, [dispatch]);
 
    return (
       <div className="container max-w-6xl mx-auto px-4 py-6">
@@ -93,9 +93,9 @@ export const ListPositions = () => {
                            </td>
                            <td className="p-6 py-4 font-medium text-gray-900 
                     dark:text-white break-words max-w-xs">
-                              <div className="grid grid-cols-2 gap-1">
+                              <div className="flex justify-center gap-3 text-gray-600">
                                  <Link to={`/cargo/edit/${position.id}`}>
-                                    <LuFilePen size={20} />
+                                      <LuFilePen size={18} className="hover:text-blue-600" />
                                  </Link>
                                  <Link to={'#'}>
                                     <LuTrash2 size={20} />

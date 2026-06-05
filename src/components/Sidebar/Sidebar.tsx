@@ -17,7 +17,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { adminItems, ISidebarItem, userItems, invitedItems, developerItems } from "./sidebar.config";
 
 
-
+import logo from "@/assets/unl.png";
 
 
 const Sidebar = () => {
@@ -48,9 +48,11 @@ const Sidebar = () => {
    if( role.includes('ROLE_INVITED')) items.push(...invitedItems);
    if( role.includes('ROLE_DEVELOPER')) items.push(...developerItems);
 
-  const handleOutside = () => {
+  const handleLogout = () => {
       console.log("CIERRE");
        dispatch(logout());
+       localStorage.clear();
+       sessionStorage.clear();
        navigate('/login', { replace: true});
   }
 
@@ -64,7 +66,7 @@ const Sidebar = () => {
       <aside className='p-2 w-64 shadow-md'>
         <div className="p-4 border-b border-gray-800">
           <div className="flex items-center justify-between">
-            <img src="/src/assets/unl.png" alt="Logo" className="h-16 w-fit" />
+            <img src={logo} alt="Logo" className="h-16 w-fit" />
 
           </div>
         </div>
@@ -81,7 +83,7 @@ const Sidebar = () => {
         </nav>
           <div className="relative bottom-1 flex justify-center mb-4">
     <Button
-      onClick={() => handleOutside()}
+      onClick={handleLogout}
       className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 py-3 px-6 font-dm text-base font-medium text-white shadow-xl shadow-green-400/75 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
     >
       <FaSignOutAlt />

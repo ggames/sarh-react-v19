@@ -14,7 +14,7 @@ export const fetchPoints = createAsyncThunk<
 >("points/fetchPoints", async (_, { rejectWithValue }) => {
   try {
     const { data } = await axiosWithAuth.get<PointWithId[]>("/point/all");
-    return data;
+    return data.sort((a, b) => a.positionCode - b.positionCode);
   } catch (error) {
     return rejectWithValue(String(error));
   }

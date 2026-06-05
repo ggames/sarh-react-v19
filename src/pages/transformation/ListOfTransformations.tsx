@@ -115,7 +115,7 @@ export const ListOfTransformations = () => {
                       className="p-6 py-4 font-medium text-gray-900 
                     dark:text-white break-words max-w-xs"
                     >
-                      <div className="grid grid-cols-2 gap-1">
+                      <div className="flex justify-center gap-3 text-gray-600">
                      
                         <Link to={"#"}>
                           <LuTrash2 size={20} />

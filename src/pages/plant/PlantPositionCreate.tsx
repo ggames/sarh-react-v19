@@ -505,6 +505,7 @@ const PlantDataTab = () => {
         <div>
           <Label htmlFor="characterPlant">Caract. Planta</Label>
           <Select {...register("characterPlant")}>
+              <option value="">Seleccionar</option>
             {Object.entries(CharacterPlant).map(([key, charac]) => (
               <option key={key} value={key}>
                 {charac}
@@ -515,6 +516,7 @@ const PlantDataTab = () => {
         <div>
           <Label htmlFor="currentStatus">Estado Actual</Label>
           <Select {...register("currentStatus")}>
+            <option value="">Seleccionar</option>
             {Object.entries(PlantStatus).map(([key, status]) => (
               <option key={key} value={key}>
                 {status}
@@ -527,6 +529,7 @@ const PlantDataTab = () => {
           <Select
             {...register("organizationalSubUnit", { valueAsNumber: true })}
           >
+            <option value="">Seleccionar</option>
             {suborganizationalDTOs.map((suborg) => (
               <option key={suborg.id} value={suborg.id}>
                 {suborg.nameSubUnit}

@@ -5,6 +5,8 @@ import { useAppSelector } from "../hooks/store"
 
 export const Header = () => {
 
+    const URL_BASE = import.meta.env.VITE_API_URL;
+
     const { user } = useAppSelector((state: RootState) => state.auth)
     const { photoUrl } = useAppSelector((state: RootState) => state.users);
     console.log("EL USUARIO ACTUAL ", photoUrl);
@@ -21,7 +23,7 @@ export const Header = () => {
 
             <div className="p-0 ">
                 <div className="flex items-center">
-                    <img className="h-8 w-8 rounded-full" src={photoUrl?? "/"} alt="Foto de perfil" />
+                    <img className="h-8 w-8 rounded-full" src={photoUrl?`${photoUrl}`:"/"} alt="Foto de perfil" />
                     <div className="ml-3">
                        {user?.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()) || ""}
                     </div>

@@ -7,6 +7,7 @@ import { StatusOfPosition } from "../../constants/StatusOfPosition";
  interface PositionState {
    position: PositionWithId | null;
    positions: PositionDto[];
+   originPositions: PositionDto[];
    positionDto: PositionDto | null;
    loading: boolean;
    error: string | null;   
@@ -15,6 +16,7 @@ import { StatusOfPosition } from "../../constants/StatusOfPosition";
 const initialState: PositionState = {
    position: null,
    positions: [],
+   originPositions: [],
    positionDto: null,
    loading: false,
    error: null
@@ -86,12 +88,12 @@ export const positionSlice = createSlice({
       });
       builder.addCase(fetchOriginPositions.fulfilled, (state, action) => {
         state.loading = false;
-        state.positions = action.payload;
+        state.originPositions = action.payload;
       });
       builder.addCase(fetchOriginPositions.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string; 
-      })
+      });
 
       builder.addCase(addPosition.pending, (state) =>{
         state.loading = true;
@@ -115,7 +117,7 @@ export const positionSlice = createSlice({
         state.loading = false;
         const index = state.positions.findIndex(pos => pos.id === action.payload.id);
         if(index !== -1){
-          const { id , organizationalUnitID: organizational, pointsAvailable } = action.payload;
+          const { id , organizationalUnit: organizational, pointsAvailable } = action.payload;
 
             const  nameUnit  = organizational?.nameUnit ;
             const updatedPosition: PositionDto = {

@@ -89,6 +89,7 @@ export const fetchOriginPositions = createAsyncThunk<
 >("position/fetchOrigin", async ({ originId }, { rejectWithValue }) => {
   try {
     const { data } = await axiosWithAuth.get(`position/origin/${originId}`);
+    console.log("CARGOS DE ORIGEN ", data);
     return data;
   } catch (error) {
     return rejectWithValue(String(error));
@@ -101,6 +102,8 @@ export const addPosition = createAsyncThunk<
   { rejectValue: string }
 >("/position/add", async (position: PositionRequestWithId, { rejectWithValue }) => {
   try {
+
+    console.log("ADD POSITION REQUEST ", position);
     const { data } = await axiosWithAuth.post<PositionWithId>(
       "position/create",
       position
