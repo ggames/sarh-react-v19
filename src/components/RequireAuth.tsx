@@ -1,7 +1,6 @@
 import {  Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAppSelector } from "../hooks/store";
 import { Spinner } from "./ui/Spinner";
-import { Unauthorized } from "./Unauthorized";
 
 
 export const RequireAuth = ({ allowedRoles }: { allowedRoles: string[] }) => {
@@ -25,6 +24,13 @@ export const RequireAuth = ({ allowedRoles }: { allowedRoles: string[] }) => {
       />
     )
   }
+  // ==========================================
+  // DEBBUGING CRÍTICO (Abre la consola F12)
+  // ==========================================
+  console.log("--- CONTROL DE ACCESO ---");
+  console.log("1. Roles requeridos por la Ruta:", allowedRoles);
+  console.log("2. Tu array de Roles en Redux:", roles);
+  // ==========================================
 
   const hasAccess = roles?.some(role => allowedRoles.includes(role))
 

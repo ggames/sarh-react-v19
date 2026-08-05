@@ -20,81 +20,124 @@ interface ISubItem {
   path: string;
 }
 
-// ========  Menu INVITED =============
-export const invitedItems: ISidebarItem[] = [
+// ========  Menu ONLY CONSULT =============
+export const onlyConsultItems: ISidebarItem[] = [
   {
-      name: "Dashboard",
-      path: "/",
-      icon: LuLayoutDashboard,
-    },
-      {
-      name: "Departamento",
-      path: "/departamento",
-      icon: PiTreeStructureDuotone
+    name: "Dashboard",
+    path: "/",
+    icon: LuLayoutDashboard,
+  },
+  {
+    name: 'Usuarios',
+    path: "/usuarios",
+    icon: FaUsers
+  },
+  {
+    name: "Configuracion Paritaria",
+    path: "/puntos",
+    icon: FaFileInvoiceDollar
+  },
+  {
+    name: "Agentes",
+    path: "/agentes/all",
+    icon: FaUsersCog,
+  },
+  {
+    name: "Cargos",
+    path: "/cargos/all",
+    icon: GrUserWorker,
+  },
+  {
+    name: "Planta de cargos",
+    path: "/plantas",
+    icon: LiaUserClockSolid,
+  },
+  {
+    name: "Transformación",
+    path: "/transformaciones",
+    icon: TbTransformFilled
+  },
+  {
+    name: "Departamento",
+    path: "/departamento",
+    icon: PiTreeStructureDuotone
 
-    },
+  },
+  {
+    name: 'Materias',
+    path: '/materias',
+    icon: VscLibrary
+  },
+
+  {
+    name: "Cambiar Contraseña",
+    path: "/change",
+    icon: TbPasswordUser
+  },
     {
-      name: 'Materias',
-      path: '/materias',
-      icon: VscLibrary
-    },
-      {
-      name: "Cambiar Contraseña",
-      path: "/change",
-      icon: TbPasswordUser   
+      name: "Informes",
+      path: "/settings",
+      icon: TbReport,
+      items: [
+        {
+          name: "De planta",
+          path: "/reporte-plantas",
+        },
+       
+      ],
     },
 ];
 
 export const developerItems: ISidebarItem[] = [
-    {
-      name: "Dashboard",
-      path: "/",
-      icon: LuLayoutDashboard,
-    },
-    {
-      name: 'Usuarios',
-      path: "/usuarios",
-      icon: FaUsers
-    },
-    {
-      name: "Administrador Contraseña",
-      path: "/resetpassword",
-      icon: TbPasswordUser   
-    },
-    {
-      name: "Cambiar Contraseña",
-      path: "/change",
-      icon: TbPasswordUser   
-    },
+  {
+    name: "Dashboard",
+    path: "/",
+    icon: LuLayoutDashboard,
+  },
+  {
+    name: 'Usuarios',
+    path: "/usuarios",
+    icon: FaUsers
+  },
+  {
+    name: "Administrador Contraseña",
+    path: "/resetpassword",
+    icon: TbPasswordUser
+  },
+  {
+    name: "Cambiar Contraseña",
+    path: "/change",
+    icon: TbPasswordUser
+  },
 ];
 
 // ========  Menu ADMIN  ============
 export const adminItems: ISidebarItem[] = [
-    {
-      name: "Dashboard",
-      path: "/",
-      icon: LuLayoutDashboard,
-    },
-    {
-      name: 'Usuarios',
-      path: "/usuarios",
-      icon: FaUsers
-    },
-    {
-      name: "Configuracion Paritaria",
-      path: "/puntos",
-      icon: FaFileInvoiceDollar
-    },
-    {
-      name: "Administrador Contraseña",
-      path: "/resetpassword",
-      icon: TbPasswordUser   
-    },
-    {
-      name: "Cambiar Contraseña",
-      path: "/change",
-      icon: TbPasswordUser   
-    },
+  {
+    name: "Dashboard",
+    path: "/",
+    icon: LuLayoutDashboard,
+  },
+  {
+    name: 'Usuarios',
+    path: "/usuarios",
+    icon: FaUsers
+  },
+  {
+    name: "Configuracion Paritaria",
+    path: "/puntos",
+    icon: FaFileInvoiceDollar
+  },
+  {
+    name: "Administrador Contraseña",
+    path: "/resetpassword",
+    icon: TbPasswordUser
+  },
+  {
+    name: "Cambiar Contraseña",
+    path: "/change",
+    icon: TbPasswordUser
+  },
 ];
 
 // ========  Menu USER  ============
@@ -106,10 +149,10 @@ export const userItems: ISidebarItem[] =
       path: "/",
       icon: LuLayoutDashboard,
     },
-     {
+    {
       name: "Cambiar Contraseña",
       path: "/change",
-      icon: TbPasswordUser   
+      icon: TbPasswordUser
     },
     {
       name: "Agentes",

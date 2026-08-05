@@ -14,7 +14,7 @@ import { Button } from '../ui/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks/store';
 import { logout } from '../../features/user';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { adminItems, ISidebarItem, userItems, invitedItems, developerItems } from "./sidebar.config";
+import { adminItems, ISidebarItem, userItems, onlyConsultItems } from "./sidebar.config";
 
 
 import logo from "@/assets/unl.png";
@@ -45,8 +45,8 @@ const Sidebar = () => {
 
    if( role.includes("ROLE_ADMIN")) items.push(...adminItems);
    if( role.includes('ROLE_USER'))  items.push(...userItems);
-   if( role.includes('ROLE_INVITED')) items.push(...invitedItems);
-   if( role.includes('ROLE_DEVELOPER')) items.push(...developerItems);
+ //if( role.includes('ROLE_INVITED')) items.push(...invitedItems);
+   if( role.includes('ROLE_ONLY_CONSULT')) items.push(...onlyConsultItems);
 
   const handleLogout = () => {
       console.log("CIERRE");

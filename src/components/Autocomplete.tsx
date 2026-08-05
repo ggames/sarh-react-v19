@@ -53,6 +53,8 @@ export function Autocomplete<T>({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
 
+  const justSelectedRef = useRef(false);  
+
   // actualizar estado interno si es controlado externamente
   useEffect(() => {
     if (controlled) setInternalValue(value ?? "");
@@ -60,6 +62,13 @@ export function Autocomplete<T>({
 
   // debounce fetch
   useEffect(() => {
+
+    
+    if (justSelectedRef.current) {
+      justSelectedRef.current = false;
+      return;
+    }
+
     if (query.length < minChars) {
       setItems([]);
       setOpen(false);
@@ -117,6 +126,9 @@ export function Autocomplete<T>({
   }
 
   function handleSelect(item: Item<T>) {
+
+      justSelectedRef.current = true;
+    if (abortRef.current) abortRef.current.abort();
     // actualizar texto del input con itemToString
     //const text = itemToString(item);
     if (!controlled) setInternalValue("");
@@ -125,6 +137,8 @@ export function Autocomplete<T>({
     setOpen(false);
     setHighlightedIndex(-1);
     setItems([]);
+   
+   
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {

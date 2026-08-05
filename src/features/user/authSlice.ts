@@ -89,10 +89,10 @@ const authSlice = createSlice({
       state.refreshToken = action.payload.refreshToken;
 
       // Guardar en almacenamiento local
-      localStorage.setItem("accessToken", action.payload.accessToken);
-      localStorage.setItem("refreshToken", action.payload.refreshToken);
-      localStorage.setItem("user", action.payload.username);
-      localStorage.setItem("roles", JSON.stringify(action.payload.roles ?? []));
+     // localStorage.setItem("accessToken", action.payload.accessToken);
+     // localStorage.setItem("refreshToken", action.payload.refreshToken);
+     // localStorage.setItem("user", action.payload.username);
+    //  localStorage.setItem("roles", JSON.stringify(action.payload.roles ?? []));
       
       setToken(action.payload.accessToken, action.payload.refreshToken, action.payload.username, action.payload.roles);
     });
